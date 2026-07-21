@@ -9,6 +9,7 @@ function App() {
 
   return (
     <div className="app">
+      <Overlay />
       <Canvas
         style={{
           background:

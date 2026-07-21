@@ -2,6 +2,8 @@
     width: 800px;
     height: 800px;
     overflow: hidden;
+    position: relative;
+    z-index: 0 !important;
 }
 
 .screen iframe {
@@ -10,4 +12,6 @@
     display: block;
     border: 0;
     transform: none;
+    position: relative;
+    z-index: 0 !important;
 }
