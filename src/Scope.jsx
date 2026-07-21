@@ -324,7 +324,7 @@ function Scope({ onLoaded }) {
                                 occlude
                             >
                                 <iframe
-                                    src="http://localhost:5176/"
+                                    src="https://scope-screen.vercel.app/"
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
                                 />
                             </Html>
