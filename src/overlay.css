@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.overlay {
+  background-color: rgba(188, 48, 48, 0.5);
+}

@@ -1,0 +1,13 @@
+.screen {
+    width: 800px;
+    height: 800px;
+    overflow: hidden;
+}
+
+.screen iframe {
+    width: 800px;
+    height: 420px;
+    display: block;
+    border: 0;
+    transform: none;
+}
