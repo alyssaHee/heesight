@@ -1,11 +1,15 @@
-import { StrictMode, useCallback, useState } from 'react'
+import { StrictMode, useCallback, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
+import { inject } from '@vercel/analytics';
 import Scope from './Scope.jsx'
 import Overlay from './Overlay.jsx'
 import './index.css'
 
 function App() {
+  useEffect(() => {
+    inject();
+  }, []);
 
   return (
     <div className="app">
