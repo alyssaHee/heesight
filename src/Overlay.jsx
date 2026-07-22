@@ -21,14 +21,25 @@ function Overlay({ loaded }) {
 
     return (
         <div className="overlay">
-            <div className={`overlay-top-half ${isRevealed ? 'revealed' : ''}`}
-                onTransitionEnd={handleAnimationFinished}></div>
+            < div className={`overlay-top-half ${isRevealed ? 'revealed' : ''}`
+            }
+                onTransitionEnd={handleAnimationFinished} ></div >
             <div className={`overlay-bottom-half ${isRevealed ? 'revealed' : ''}`}></div>
             <div className="overlay-info-container">
-                <p className={`loading-text ${isRevealed ? 'revealed' : ''}`}>Use left click and drag to navigate!</p>
-                {progress < 100 ? (null) : !isRevealed ? (<button onClick={handleReveal} className="overlay-button">Enter</button>) : null}
+                <p className={`loading-text ${isRevealed ? 'revealed' : ''} hide-on-mobile`}>Use left click and drag to navigate!</p>
+                <p className="small-overlay-text hide-on-desktop">This website is still being optimized for mobile view.<br />Please use a desktop browser for now</p>
+                {progress >= 100 && !isRevealed && (
+                    <div className="button-outer hide-on-mobile">
+                        <button
+                            onClick={handleReveal}
+                            className="overlay-button hide-on-mobile"
+                        >
+                            Enter
+                        </button>
+                    </div>
+                )}
             </div>
-        </div>
+        </ div >
     )
 }
 

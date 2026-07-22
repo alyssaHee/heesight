@@ -52,18 +52,45 @@
   z-index: 9999;
 }
 
+.button-outer {
+  filter: drop-shadow(0px 0px 10px rgba(5, 5, 3, 0.9));
+}
+
 .overlay-button {
   margin-top: 12px;
-  padding: 12px 24px;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 24px;
   font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  background-color: rgba(188, 88, 48, 0.936);
-  color: rgb(26, 7, 7);
+  letter-spacing: 0.75px;
+  font-weight: 600;
+  background-color: #d3d3ca;
+  color: rgb(27, 18, 11);
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
+  clip-path: polygon(8px 0%,
+      /* Top-left start */
+      calc(100% - 10px) 0%,
+      /* Top-right start */
+      100% 8px,
+      /* Top-right end */
+      100% calc(100% - 8px),
+      /* Bottom-right start */
+      calc(100% - 8px) 100%,
+      /* Bottom-right end */
+      8px 100%,
+      /* Bottom-left start */
+      0% calc(100% - 8px),
+      /* Bottom-left end */
+      0% 8px
+      /* Top-left end */
+    );
   cursor: pointer;
   z-index: 99999;
+}
+
+.overlay-button:hover {
+  scale: 1.01;
+  transition: scale 0.1s ease-in-out;
 }
 
 .loading-text {
@@ -75,5 +102,25 @@
 
   &.revealed {
     display: none;
+  }
+}
+
+.small-overlay-text {
+  font-size: 16px;
+  font-family: 'consolas', monospace;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.708);
+  z-index: 99999;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-on-desktop {
+    display: none !important;
   }
 }
