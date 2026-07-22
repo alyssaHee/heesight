@@ -58,39 +58,29 @@
 
 .overlay-button {
   margin-top: 12px;
-  padding: 10px 20px;
+  padding: 8px 16px;
   font-size: 24px;
   font-family: 'Inter', sans-serif;
   letter-spacing: 0.75px;
   font-weight: 600;
   background-color: #d3d3ca;
   color: rgb(27, 18, 11);
-  border: none;
-  border-radius: 12px;
-  clip-path: polygon(8px 0%,
-      /* Top-left start */
-      calc(100% - 10px) 0%,
-      /* Top-right start */
-      100% 8px,
-      /* Top-right end */
-      100% calc(100% - 8px),
-      /* Bottom-right start */
-      calc(100% - 8px) 100%,
-      /* Bottom-right end */
-      8px 100%,
-      /* Bottom-left start */
-      0% calc(100% - 8px),
-      /* Bottom-left end */
-      0% 8px
-      /* Top-left end */
-    );
+  border: 0.5px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: inset 4px 4px 6px rgba(251, 251, 251, 0.8), inset -4px -4px 3px rgba(5, 5, 3, 0.18), 0px 0px 15px rgba(5, 5, 3, 0.7);
   cursor: pointer;
   z-index: 99999;
+
 }
 
 .overlay-button:hover {
-  scale: 1.01;
+  color: rgb(67, 45, 27);
+}
+
+.overlay-button:active {
+  scale: 0.98;
   transition: scale 0.1s ease-in-out;
+  box-shadow: inset 4px 4px 4px rgba(5, 5, 3, 0.447), inset -4px -4px 4px rgba(251, 251, 251, 0.447);
 }
 
 .loading-text {
