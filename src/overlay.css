@@ -117,6 +117,14 @@
   .hide-on-mobile {
     display: none !important;
   }
+
+  html,
+  body {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    touch-action: none;
+  }
 }
 
 @media (min-width: 769px) {
