@@ -333,6 +333,7 @@ function Scope({ onLoaded }) {
                                 transform
                                 distanceFactor={0.1}
                                 occlude
+                                portal={null}
                             >
                                 <iframe
                                     className="screen-iframe"
