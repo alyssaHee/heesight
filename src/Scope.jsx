@@ -22,6 +22,20 @@ function Scope({ onLoaded }) {
     const idleSpinRef = useRef(0)
     const defaultCameraPosition = useRef(new THREE.Vector3())
     const defaultTarget = useRef(new THREE.Vector3())
+    const { size, viewport } = useThree();
+
+    const cssWidth = size.width / viewport.dpr;
+    const currentRatio = size.width / size.height;
+    const targetRatio = 16 / 9;
+
+    let finalScale = 1;
+
+    if (cssWidth > 768) {
+        finalScale = 3.5 / 4;
+    } else {
+        finalScale = 1;
+    }
+
     const basePose = useRef({
         rotation: new THREE.Euler(0, 0, 0),
         position: new THREE.Vector3(0, 0, 0),
@@ -32,9 +46,8 @@ function Scope({ onLoaded }) {
         position: new THREE.Vector3(0.35, -0.2, 0),
         scale: new THREE.Vector3(1.4, 1.4, 1.4)
     })
-    const lockedCameraPosition = useRef(new THREE.Vector3(0, 0.2, 3.5))
+    const lockedCameraPosition = useRef(new THREE.Vector3(0, 0.2, 4 * finalScale))
     const lockedTarget = useRef(new THREE.Vector3(0, 0, 0))
-
 
     const scope = useLoader(GLTFLoader, '/models/oscilloscope4.glb', (loader) => {
         const dracoLoader = new DRACOLoader(THREE.DefaultLoadingManager)
@@ -54,9 +67,9 @@ function Scope({ onLoaded }) {
             if (child.isMesh) {
                 if (child.name.includes('bnc')) {
                     child.material = new THREE.MeshPhysicalMaterial({
-                        color: 0x333333,
-                        roughness: 0.3,
-                        metalness: 0.2
+                        color: 0x000000,
+                        roughness: 0.9,
+                        metalness: 0.5
                     })
                 }
                 else {
@@ -247,8 +260,6 @@ function Scope({ onLoaded }) {
         if (spinRef.current) {
             spinRef.current.rotation.y = idleSpinRef.current
         }
-
-
     })
 
 
@@ -277,7 +288,7 @@ function Scope({ onLoaded }) {
 
     return (
         <>
-            <Environment preset="night" />
+            <Environment preset="apartment" />
 
             <OrbitControls
                 ref={controlsRef}
@@ -326,6 +337,7 @@ function Scope({ onLoaded }) {
                                 <iframe
                                     className="screen-iframe"
                                     src="https://scope-screen.vercel.app/"
+                                    // src="http://localhost:5175/"
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
                                 />
                             </Html>
@@ -338,7 +350,7 @@ function Scope({ onLoaded }) {
             <Text
                 ref={textRef}
                 visible={visible}
-                position={[-0.59, 0.06, 1]}
+                position={[-0.55, 0.06, 1]}
                 fontSize={0.03}
                 color="#c9b8ab"
                 anchorX="center"

@@ -45,7 +45,6 @@
 
 .overlay-info-container {
   position: absolute;
-  margin-top: 5%;
   width: 50%;
   height: 20%;
   text-align: center;
@@ -97,15 +96,20 @@
 
 .small-overlay-text {
   font-size: 16px;
-  font-family: 'consolas', monospace;
-  font-weight: 700;
+  font-family: 'syne', monospace;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.708);
   z-index: 99999;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hide-on-mobile {
     display: none !important;
+  }
+
+  .overlay-info-container {
+    width: 75%;
+    height: 35%;
   }
 
   html,
@@ -117,7 +121,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .hide-on-desktop {
     display: none !important;
   }
