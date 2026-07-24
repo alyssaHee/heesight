@@ -35,7 +35,7 @@ function Scope({ onLoaded }) {
     }
 
     if (cssWidth <= 768) {
-        mobileScale = 0.7;
+        mobileScale = 1.5;
     }
 
     const basePose = useRef({
