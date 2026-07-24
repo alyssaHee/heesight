@@ -324,7 +324,7 @@ function Scope({ onLoaded }) {
                 >
                     <group ref={spinRef}>
                         <primitive object={scope.scene} scale={4} position={[0, 0, 0]}>
-                            <Html
+                            <Html fullscreen
                                 wrapperClass="screen"
                                 style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
                                 position={[-0.047, 0.108, 0.085
@@ -336,8 +336,9 @@ function Scope({ onLoaded }) {
                             >
                                 <iframe
                                     className="screen-iframe"
+                                    scrolling="no"
                                     src="https://scope-screen.vercel.app/"
-                                    // src="http://localhost:5175/"
+                                    //src="http://localhost:5175/"
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
                                 />
                             </Html>
