@@ -102,7 +102,28 @@
   z-index: 99999;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1000px) and (orientation: landscape) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+
+
+  .overlay-info-container {
+    width: 75%;
+    height: 35%;
+  }
+
+  html,
+  body {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    touch-action: none;
+  }
+}
+
+@media (max-height: 1000px) and (orientation: portrait) {
   .hide-on-mobile {
     display: none !important;
   }
@@ -121,8 +142,26 @@
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (orientation: landscape) {
   .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+@media (min-height: 1025px) and (orientation: portrait) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+@media (min-width: 933px) and (max-width: 1024px) and (orientation: landscape) {
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-height: 933px) and (max-height: 1024px) and (orientation: portrait) {
+  .hide-on-tablet {
     display: none !important;
   }
 }

@@ -25,17 +25,12 @@ function Scope({ onLoaded }) {
     const { size, viewport } = useThree();
 
     const cssWidth = size.width / viewport.dpr;
-    let mobileScale = 1;
     let finalScale = 1;
 
     if (cssWidth > 768) {
         finalScale = 3.5 / 4;
     } else {
         finalScale = 1;
-    }
-
-    if (cssWidth <= 768) {
-        mobileScale = 1.5;
     }
 
     const basePose = useRef({
@@ -329,7 +324,7 @@ function Scope({ onLoaded }) {
                             <Html fullscreen
                                 wrapperClass="screen"
                                 style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
-                                position={[-0.047, 0.108 * mobileScale, 0.085
+                                position={[-0.047, 0.108, 0.085
                                 ]}
                                 rotation={[0, 0, 0]}
                                 transform

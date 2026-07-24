@@ -26,10 +26,11 @@ function Overlay({ loaded }) {
                 onTransitionEnd={handleAnimationFinished} ></div >
             <div className={`overlay-bottom-half ${isRevealed ? 'revealed' : ''}`}></div>
             <div className="overlay-info-container">
-                <p className={`loading-text ${isRevealed ? 'revealed' : ''} hide-on-mobile`}>Use left click and drag to navigate!</p>
-                <p className={`loading-text ${isRevealed ? 'revealed' : ''} small-overlay-text hide-on-desktop`}>This website is not optimized for mobile view. Please rotate to landscape mode for the best experience. Use tap and drag to navigate!</p>
+                <p className={`loading-text ${isRevealed ? 'revealed' : ''} hide-on-mobile hide-on-tablet`}>Use left click and drag to navigate!</p>
+                <p className={`loading-text ${isRevealed ? 'revealed' : ''} small-overlay-text hide-on-mobile hide-on-desktop`}>This website is not optimized for mobile view. Please rotate to landscape mode for the best experience. Use tap and drag to navigate!</p>
+                <p className={`loading-text ${isRevealed ? 'revealed' : ''} small-overlay-text hide-on-desktop hide-on-tablet`}>This website is not yet optimized for mobile view. Please use a desktop browser for now.</p>
                 {progress >= 100 && !isRevealed && (
-                    <div className="button-outer">
+                    <div className="button-outer hide-on-mobile">
                         <button
                             onClick={handleReveal}
                             className="overlay-button"
