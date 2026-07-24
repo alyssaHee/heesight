@@ -2,7 +2,7 @@
     /* width: 800px;
     height: 800px; */
     overflow: hidden;
-    position: relative;
+    position: absolute;
     z-index: 0 !important;
     user-select: none;
 
@@ -12,7 +12,7 @@
     display: block;
     border: 0;
     transform: none;
-    position: relative;
+    position: absolute;
     z-index: 0 !important;
 
     /* Step A: Force it to think it is open on a desktop laptop */
