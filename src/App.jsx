@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import { inject } from '@vercel/analytics';
 import Scope from './Scope.jsx'
 import Overlay from './Overlay.jsx'
+import HomeSection from './HomeSection.jsx'
 import './index.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="app">
+      <HomeSection />
       <Overlay />
       <Canvas
         style={{
