@@ -19,7 +19,7 @@
 }
 
 .link-btn {
-    width: 36px;
+    width: 30px;
 }
 
 .link-btn:hover {
@@ -28,13 +28,14 @@
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 24px;
     font-family: 'roboto mono', monospace;
 
 }
 
 h2 {
     margin-top: -4px;
-    font-size: 24px;
+    font-size: 18px;
+    letter-spacing: 1px;
     font-family: 'roboto', sans-serif;
 }
