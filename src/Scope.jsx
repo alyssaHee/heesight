@@ -64,9 +64,9 @@ function Scope({ onLoaded }) {
             if (child.isMesh) {
                 if (child.name.includes('bnc')) {
                     child.material = new THREE.MeshPhysicalMaterial({
-                        color: 0x000000,
-                        roughness: 0.9,
-                        metalness: 0.5
+                        color: 0x333333,
+                        roughness: 0.4,
+                        metalness: 0.8
                     })
                 }
                 else {
