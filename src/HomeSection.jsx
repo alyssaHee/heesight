@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useProgress } from '@react-three/drei'
 import './homeSection.css'
-import linkedin from './assets/linkedin.png'
-import github from './assets/github.png'
-import email from './assets/mail.png'
+import linkedin from './assets/linkedin1.png'
+import github from './assets/github1.png'
+import email from './assets/mail1.png'
 
 function HomeSection() {
 

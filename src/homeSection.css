@@ -1,6 +1,6 @@
 .home-section {
     position: absolute;
-    width: 300px;
+    width: 200px;
     top: 3%;
     left: 2.5%;
     display: flex;
@@ -30,12 +30,13 @@
 h1 {
     font-size: 24px;
     font-family: 'roboto mono', monospace;
-
+    color: rgb(31, 20, 12);
 }
 
 h2 {
-    margin-top: -4px;
+    margin-top: 0px;
     font-size: 18px;
     letter-spacing: 1px;
+    color: rgb(31, 20, 12);
     font-family: 'roboto', sans-serif;
 }
