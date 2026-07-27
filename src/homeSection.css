@@ -30,14 +30,14 @@
 h1 {
     font-size: 24px;
     font-family: 'roboto mono', monospace;
-    color: rgb(39, 25, 15);
+    color: rgb(14, 9, 5);
 }
 
 h2 {
     margin-top: 0px;
     font-size: 18px;
     letter-spacing: 1px;
-    color: rgb(31, 20, 12);
+    color: rgb(18, 12, 7);
     font-family: 'roboto', sans-serif;
     font-weight: 400;
 }
