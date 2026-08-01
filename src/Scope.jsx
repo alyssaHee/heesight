@@ -12,7 +12,7 @@ THREE.DefaultLoadingManager.onLoad = () => {
 
 }
 
-function Scope({ onLoaded }) {
+function Scope({ onLoaded, onLockedChange }) {
     const { camera, gl } = useThree()
     const controlsRef = useRef()
     const modelRef = useRef()
@@ -198,6 +198,10 @@ function Scope({ onLoaded }) {
     }, [locked, unlocking])
 
     useEffect(() => {
+        onLockedChange?.(locked || unlocking)
+    }, [locked, unlocking, onLockedChange])
+
+    useEffect(() => {
         document.body.style.cursor = hovered ? 'pointer' : 'auto'
 
         const targetScale = (hovered && !locked && !unlocking) ? 4.1 : 4
@@ -336,7 +340,7 @@ function Scope({ onLoaded }) {
                                     className="screen-iframe"
                                     scrolling="no"
                                     src="https://scope-screen.vercel.app/"
-                                    //src="http://localhost:5175/"
+                                    //src="http://localhost:5174/"
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none' }}
                                 />
                             </Html>

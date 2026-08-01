@@ -8,13 +8,15 @@ import HomeSection from './HomeSection.jsx'
 import './index.css'
 
 function App() {
+  const [isLockedView, setIsLockedView] = useState(false)
+
   useEffect(() => {
     inject();
   }, []);
 
   return (
     <div className="app">
-      <HomeSection />
+      <HomeSection isHidden={isLockedView} />
       <Overlay />
       <Canvas
         style={{
@@ -31,7 +33,7 @@ function App() {
           position: [3, 1.5, 4],
         }}
       >
-        <Scope />
+        <Scope onLockedChange={setIsLockedView} />
       </Canvas>
     </div>
   )

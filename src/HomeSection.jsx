@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import { useProgress } from '@react-three/drei'
 import './homeSection.css'
 import linkedin from './assets/linkedin1.png'
 import github from './assets/github1.png'
 import email from './assets/mail1.png'
 
-function HomeSection() {
+function HomeSection({ isHidden = false }) {
 
     return (
-        <div className="home-section">
+        <div
+            className={`home-section ${isHidden ? 'hidden' : ''}`}
+            aria-hidden={isHidden}
+        >
             <h1>Alyssa Hee</h1>
             <h2>ECE @ UofT</h2>
             <div className="button-box">

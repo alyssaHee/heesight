@@ -8,6 +8,16 @@
     align-items: flex-start;
     z-index: 999;
     user-select: none;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(0);
+}
+
+.home-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
 }
 
 .button-box {
