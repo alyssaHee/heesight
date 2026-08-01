@@ -80,6 +80,8 @@ function Scope({ onLoaded, onLockedChange }) {
     const [hovered, setHovered] = useState(false)
     const [locked, setLocked] = useState(false)
     const [unlocking, setUnlocking] = useState(false)
+    const [isTouchDevice, setIsTouchDevice] = useState(false)
+    const exitTextRef = useRef(null)
 
     useEffect(() => {
         const controls = controlsRef.current
@@ -89,6 +91,11 @@ function Scope({ onLoaded, onLockedChange }) {
         defaultCameraPosition.current.copy(camera.position)
         defaultTarget.current.copy(controls.target)
     }, [camera])
+
+    useEffect(() => {
+        const touchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches
+        setIsTouchDevice(touchDevice)
+    }, [])
 
     useEffect(() => {
         const handleWindowPointerMove = (event) => {
@@ -175,9 +182,38 @@ function Scope({ onLoaded, onLockedChange }) {
         clearPointerState()
     }
 
+    const handleExitTextInteraction = (event) => {
+        event?.stopPropagation()
+
+        if (!locked || unlocking) return
+
+        handleUnlock()
+    }
+
+    const handleExitTextTap = (event) => {
+        if (!isTouchDevice) return
+
+        handleExitTextInteraction(event)
+    }
+
     useEffect(() => {
-        const handleWindowPointerUp = () => {
+        const handleWindowPointerUp = (event) => {
             clearPointerState()
+
+            if (!locked || unlocking || !isTouchDevice || !exitTextRef.current) return
+
+            const rect = gl.domElement.getBoundingClientRect()
+            const pointer = new THREE.Vector2(
+                ((event.clientX - rect.left) / rect.width) * 2 - 1,
+                -((event.clientY - rect.top) / rect.height) * 2 + 1
+            )
+
+            const raycaster = new THREE.Raycaster()
+            raycaster.setFromCamera(pointer, camera)
+
+            if (raycaster.intersectObject(exitTextRef.current, true).length) {
+                handleUnlock()
+            }
         }
 
         window.addEventListener('pointerup', handleWindowPointerUp)
@@ -187,7 +223,7 @@ function Scope({ onLoaded, onLockedChange }) {
             window.removeEventListener('pointerup', handleWindowPointerUp)
             window.removeEventListener('pointercancel', handleWindowPointerUp)
         }
-    }, [])
+    }, [camera, gl, locked, unlocking, isTouchDevice])
 
     useEffect(() => {
         const controls = controlsRef.current
@@ -351,7 +387,10 @@ function Scope({ onLoaded, onLockedChange }) {
                 </group>
             </Center>
             <Text
-                ref={textRef}
+                ref={(node) => {
+                    textRef.current = node
+                    exitTextRef.current = node
+                }}
                 visible={visible}
                 position={[-0.55, 0.06, 1]}
                 fontSize={0.03}
@@ -359,6 +398,26 @@ function Scope({ onLoaded, onLockedChange }) {
                 anchorX="center"
                 anchorY="middle"
                 rotation={[0, 0, Math.PI / 2]}
+                onPointerDown={(event) => {
+                    if (isTouchDevice) {
+                        handleExitTextTap(event)
+                    }
+                }}
+                onPointerUp={(event) => {
+                    if (isTouchDevice) {
+                        handleExitTextTap(event)
+                    }
+                }}
+                onClick={(event) => {
+                    if (!isTouchDevice) {
+                        handleExitTextInteraction(event)
+                    }
+                }}
+                onPointerEnter={(event) => {
+                    if (!isTouchDevice) {
+                        handleExitTextInteraction(event)
+                    }
+                }}
             >
                 Exit
             </Text>
