@@ -5,7 +5,9 @@
     position: absolute;
     z-index: 0 !important;
     user-select: none;
-
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .screen-iframe {
@@ -24,6 +26,10 @@
 
     transform: scale(0.5);
 
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
 }
 
