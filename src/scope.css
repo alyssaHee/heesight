@@ -26,3 +26,11 @@
 
     -webkit-font-smoothing: antialiased;
 }
+
+@media (max-height: 430px) {
+
+    .screen-iframe {
+        top: -426px;
+        left: -802px;
+    }
+}
