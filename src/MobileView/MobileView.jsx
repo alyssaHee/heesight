@@ -5,48 +5,24 @@ import rotateIcon from '../assets/rotate.png'
 function MobileView() {
     const iframeRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
-    // Track iframe DOM is loaded and ready to receive messages
-    const [isIframeLoaded, setIsIframeLoaded] = useState(false);
 
-    useEffect(() => {
-        const updateMobileState = () => {
-            const mobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches;
-            setIsMobile(mobile);
-        };
-
-        updateMobileState();
-        window.addEventListener('resize', updateMobileState);
-
-        return () => {
-            window.removeEventListener('resize', updateMobileState);
-        };
-    }, []);
-
-    const iframeSrc = "http://scope-screen.vercel.app/";
-
-    useEffect(() => {
-        // Stop if iframe DOM not ready
-        if (!iframeRef.current?.contentWindow || !isIframeLoaded) return;
-
-        iframeRef.current.contentWindow.postMessage(
-            {
-                type: 'device-info',
-                isMobile,
-            },
-            'http://scope-screen.vercel.app'
-        );
-    }, [isMobile, isIframeLoaded]);
+    window.addEventListener('message', (event) => {
+        if (event.data?.type === 'request-device-info') {
+            event.source?.postMessage(
+                { type: 'device-info', isMobile: /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) },
+                event.origin
+            )
+        }
+    })
 
     return (
         <div className="mobile-view">
             <div className="iframe-container">
                 <iframe
-                    ref={iframeRef}
                     title="Mobile View"
                     className="mobile-iframe"
                     scrolling="no"
-                    src={iframeSrc}
-                    onLoad={() => setIsIframeLoaded(true)}
+                    src="http://scope-screen.vercel.app"
                 />
             </div>
 
