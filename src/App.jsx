@@ -10,10 +10,34 @@ import './index.css'
 
 function App() {
   const [isLockedView, setIsLockedView] = useState(false)
+  const [deviceContext, setDeviceContext] = useState('desktop')
 
   useEffect(() => {
     inject();
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const initialDevice = params.get('device')
+
+    if (initialDevice === 'mobile' || initialDevice === 'desktop') {
+      setDeviceContext(initialDevice)
+    }
+
+    const handleMessage = (event) => {
+      if (event.data?.type === 'device-info') {
+        setDeviceContext(event.data.isMobile ? 'mobile' : 'desktop')
+      }
+    }
+
+    window.addEventListener('message', handleMessage)
+
+    return () => {
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
+
+  const isMobileContext = deviceContext === 'mobile'
 
   return (
     <>

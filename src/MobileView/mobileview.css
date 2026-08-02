@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #ebeae9;
 }
 
 .iframe-container {
@@ -36,6 +36,15 @@
 
 .mobile-message {
     display: none;
+    font-family: 'roboto mono', monospace;
+    color: #4e4239;
+    padding: 0px 10%;
+}
+
+.rotate-image {
+    width: 50%;
+    height: auto;
+    margin-bottom: 5%;
 }
 
 @media (max-width: 480px) and (max-height: 932px) and (orientation: portrait) and (pointer: coarse) {
