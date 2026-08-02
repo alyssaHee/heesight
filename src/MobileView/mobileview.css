@@ -16,7 +16,7 @@
     background-size: 1464px;
     background-position: -288px -188px;
     border: solid transparent;
-    border-width: 70px 200px;
+    border-width: 50px 200px;
     background-clip: border-box;
 }
 
@@ -51,18 +51,18 @@
 
 @media (max-width: 668px) and (orientation: landscape) {
     .iframe-container {
-        border-width: 30px 60px !important;
+        border-width: 20px 60px !important;
     }
 }
 
 @media (max-width: 741px) and (min-width: 669px) and (orientation: landscape) {
     .iframe-container {
-        border-width: 24px 100px !important;
+        border-width: 14px 100px !important;
     }
 }
 
 @media (max-width: 900px) and (min-width: 742px) and (orientation: landscape) {
     .iframe-container {
-        border-width: 40px 160px !important;
+        border-width: 30px 160px !important;
     }
 }
