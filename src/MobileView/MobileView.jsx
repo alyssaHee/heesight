@@ -3,17 +3,22 @@ import './mobileview.css'
 import rotateIcon from '../assets/rotate.png'
 
 function MobileView() {
-    const iframeRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const handleMessage = (event) => {
+            if (event.data?.type !== 'request-device-info') return
 
-    window.addEventListener('message', (event) => {
-        if (event.data?.type === 'request-device-info') {
             event.source?.postMessage(
-                { type: 'device-info', isMobile: /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) },
+                {
+                    type: 'device-info',
+                    isMobile: /Android|iPhone|iPad|iPod/i.test(navigator.userAgent),
+                },
                 event.origin
             )
         }
-    })
+
+        window.addEventListener('message', handleMessage)
+        return () => window.removeEventListener('message', handleMessage)
+    }, [])
 
     return (
         <div className="mobile-view">
@@ -22,20 +27,16 @@ function MobileView() {
                     title="Mobile View"
                     className="mobile-iframe"
                     scrolling="no"
-                    src="http://scope-screen.vercel.app"
+                    src="https://scope-screen.vercel.app/"
                 />
             </div>
 
             <div className="mobile-message">
-                <img
-                    className="rotate-image"
-                    src={rotateIcon}></img>
+                <img className="rotate-image" src={rotateIcon} alt="Rotate phone" />
                 <p>
-                    Please rotate to landscape mode to view. To see 3D version of this site, please visit on desktop :&#41;
+                    Please rotate to landscape mode to view. To see the 3D version of this site, please visit on desktop :)
                 </p>
             </div>
         </div>
     )
 }
-
-export default MobileView
