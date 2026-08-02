@@ -40,3 +40,5 @@ function MobileView() {
         </div>
     )
 }
+
+export default MobileView
