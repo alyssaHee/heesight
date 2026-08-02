@@ -1,0 +1,68 @@
+.mobile-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.iframe-container {
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 515px;
+    overflow: visible;
+    background-image: url('../assets/render.png');
+    background-size: 1464px;
+    background-position: -288px -188px;
+    border: solid transparent;
+    border-width: 70px 200px;
+    background-clip: border-box;
+}
+
+.mobile-iframe {
+    z-index: 0 !important;
+
+    width: 1600px;
+    height: 840px;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: scale(0.375);
+    transform-origin: 0 0;
+}
+
+.mobile-message {
+    display: none;
+}
+
+@media (max-width: 480px) and (max-height: 932px) and (orientation: portrait) and (pointer: coarse) {
+    .iframe-container {
+        display: none;
+    }
+
+    .mobile-message {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 668px) and (orientation: landscape) {
+    .iframe-container {
+        border-width: 30px 60px !important;
+    }
+}
+
+@media (max-width: 741px) and (min-width: 669px) and (orientation: landscape) {
+    .iframe-container {
+        border-width: 24px 100px !important;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 742px) and (orientation: landscape) {
+    .iframe-container {
+        border-width: 40px 160px !important;
+    }
+}
