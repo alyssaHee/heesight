@@ -52,7 +52,7 @@ function Scope({ onLoaded, onLockedChange }) {
         loader.setDRACOLoader(dracoLoader)
     })
 
-    const texture = useLoader(THREE.TextureLoader, '/textures/Bake6.webp')
+    const texture = useLoader(THREE.TextureLoader, '/textures/Bake6july.webp')
 
 
     useEffect(() => {
@@ -375,8 +375,8 @@ function Scope({ onLoaded, onLockedChange }) {
                                 <iframe
                                     className="screen-iframe"
                                     scrolling="no"
-                                    src="https://scope-screen.vercel.app/"
-                                    //src="http://localhost:5174/"
+                                    //src="https://scope-screen.vercel.app/"
+                                    src="http://localhost:5174/"
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none', touchAction: 'manipulation' }}
                                 />
                             </Html>
