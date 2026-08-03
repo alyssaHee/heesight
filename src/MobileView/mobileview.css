@@ -4,6 +4,10 @@
     align-items: center;
     height: 100vh;
     background-color: #ebeae9;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .iframe-container {
@@ -20,6 +24,11 @@
     border: solid transparent;
     border-width: 30px 200px;
     background-clip: border-box;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .mobile-iframe {
@@ -34,6 +43,11 @@
 
     transform: scale(0.35);
     transform-origin: 0 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .mobile-message {
