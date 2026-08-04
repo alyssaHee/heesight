@@ -34,7 +34,7 @@ function MobileView() {
             <div className="mobile-message">
                 <img className="rotate-image" src={rotateIcon} alt="Rotate phone" />
                 <p>
-                    Please rotate to landscape mode to view. To see the 3D version of this site, please visit on desktop :)
+                    Please rotate to landscape mode to view. To see the 3D version of this site, please visit on desktop <span className="smiley">:)</span>
                 </p>
             </div>
         </div>

@@ -63,6 +63,10 @@
     margin-bottom: 5%;
 }
 
+.smiley {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 @media (max-width: 480px) and (max-height: 932px) and (orientation: portrait) and (pointer: coarse) {
     .iframe-container {
         display: none;
