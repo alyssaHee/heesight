@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './mobileview.css'
-import rotateIcon from '../assets/rotate1.png'
+import rotateIcon from '../assets/rotate.png'
 
 function MobileView() {
     useEffect(() => {
