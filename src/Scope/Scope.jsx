@@ -46,7 +46,7 @@ function Scope({ onLoaded, onLockedChange }) {
     const lockedCameraPosition = useRef(new THREE.Vector3(0, 0.2, 4 * finalScale))
     const lockedTarget = useRef(new THREE.Vector3(0, 0, 0))
 
-    const scope = useLoader(GLTFLoader, '/models/oscilloscope4.glb', (loader) => {
+    const scope = useLoader(GLTFLoader, '/models/oscilloscope.glb', (loader) => {
         const dracoLoader = new DRACOLoader(THREE.DefaultLoadingManager)
         dracoLoader.setDecoderPath('/draco/')
         loader.setDRACOLoader(dracoLoader)
