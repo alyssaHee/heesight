@@ -41,14 +41,14 @@
 h1 {
     font-size: 24px;
     font-family: 'roboto mono', monospace;
-    color: rgb(14, 9, 5);
+    color: rgb(26, 17, 10);
 }
 
 h2 {
     margin-top: 0px;
     font-size: 18px;
     letter-spacing: 1px;
-    color: rgb(18, 12, 7);
+    color: rgb(28, 19, 12);
     font-family: 'roboto', sans-serif;
     font-weight: 400;
 }
