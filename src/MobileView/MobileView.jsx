@@ -3,6 +3,13 @@ import './mobileview.css'
 import rotateIcon from '../assets/rotate.png'
 
 function MobileView() {
+    const iframeUrl = new URL('https://scope-screen.vercel.app/')
+    const screen = new URLSearchParams(window.location.search).get('screen')
+
+    if (screen) {
+        iframeUrl.searchParams.set('screen', screen)
+    }
+
     useEffect(() => {
         const handleMessage = (event) => {
             if (event.data?.type !== 'request-device-info') return
@@ -27,7 +34,8 @@ function MobileView() {
                     title="Mobile View"
                     className="mobile-iframe"
                     scrolling="no"
-                    src="https://scope-screen.vercel.app/"
+                    //src="https://scope-screen.vercel.app/"
+                    src={iframeUrl.toString()}
                 />
             </div>
 

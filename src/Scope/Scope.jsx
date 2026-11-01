@@ -14,6 +14,13 @@ THREE.DefaultLoadingManager.onLoad = () => {
 
 function Scope({ onLoaded, onLockedChange }) {
     const { camera, gl } = useThree()
+    const iframeUrl = new URL('https://scope-screen.vercel.app/')
+    const screen = new URLSearchParams(window.location.search).get('screen')
+
+    if (screen) {
+        iframeUrl.searchParams.set('screen', screen)
+    }
+
     const controlsRef = useRef()
     const modelRef = useRef()
     const spinRef = useRef()
@@ -52,7 +59,7 @@ function Scope({ onLoaded, onLockedChange }) {
         loader.setDRACOLoader(dracoLoader)
     })
 
-    const texture = useLoader(THREE.TextureLoader, '/textures/Bake6july.webp')
+    const texture = useLoader(THREE.TextureLoader, '/textures/Bake6oct.webp')
 
 
     useEffect(() => {
@@ -375,8 +382,8 @@ function Scope({ onLoaded, onLockedChange }) {
                                 <iframe
                                     className="screen-iframe"
                                     scrolling="no"
-                                    src="https://scope-screen.vercel.app/"
-                                    //src="http://localhost:5174/"
+                                    //src="https://scope-screen.vercel.app/"
+                                    src={iframeUrl.toString()}
                                     style={{ pointerEvents: locked && !unlocking ? 'auto' : 'none', touchAction: 'manipulation' }}
                                 />
                             </Html>
